@@ -3,7 +3,7 @@ name: update translations
 on:
   push:
     paths-ignore: 
-      - tag-translations
+      - master
     branches:
       - '*'
   schedule:
@@ -18,7 +18,7 @@ jobs:
 
     - uses: actions/checkout@v2
       with:
-        ref: tag-translations
+        ref: master
 
     - name: Set up Python
       uses: actions/setup-python@v1
