@@ -9,8 +9,6 @@ import collections
 import struct
 import base64
 import hashlib
-import gzip
-import shutil
 from bs4 import BeautifulSoup
 
 TRANSLATION_PATCH = {
@@ -72,7 +70,7 @@ def saveTags(path, tags):
         for x, y in tags:
             f.write(x.encode())
             f.write(struct.pack('b', ord('\r')))
-            f.write(y.encode())
+            f.write(base64.b64encode(y.encode()))
             f.write(struct.pack('b', ord('\n')))
         # get file size
         f.seek(0, 2)
